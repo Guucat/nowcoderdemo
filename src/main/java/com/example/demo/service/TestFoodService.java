@@ -10,8 +10,8 @@ import javax.annotation.PreDestroy;
  * @create 2022/8/1 - 15:31
  */
 @Service
-public class FoodService {
-    public FoodService() {
+public class TestFoodService {
+    public TestFoodService() {
         System.out.println("创建对象");
     }
 

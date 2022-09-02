@@ -1,9 +1,12 @@
 package com.example.demo;
 
-import com.example.demo.dao.Student;
-import com.example.demo.service.FoodService;
+import com.example.demo.dao.DiscussPostMapper;
+import com.example.demo.entity.DiscussPost;
+import com.example.demo.service.TestFoodService;
+import com.example.demo.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -19,6 +22,7 @@ class DemoApplicationTests implements ApplicationContextAware {
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.context = applicationContext;
     }
+
     @Test
     public void contextTest() {
 //        Student student1 = context.getBean(Student.class);
@@ -27,8 +31,8 @@ class DemoApplicationTests implements ApplicationContextAware {
 //        System.out.println(student2);
 //        System.out.println(student1.hi());
 //
-//        FoodService foodService = context.getBean(FoodService.class);
-//        System.out.println(foodService);
+        TestFoodService testFoodService = context.getBean(TestFoodService.class);
+        System.out.println(testFoodService);
 
         Integer[] nums = new Integer[] {1, 6, 3, 5, 7, 8};
         Arrays.sort(nums, new Comparator<Integer>() {
@@ -42,5 +46,23 @@ class DemoApplicationTests implements ApplicationContextAware {
         System.out.println(Arrays.toString(nums));  // [1, 3, 5, 6, 7, 8]
         ArrayList<Integer> list = new ArrayList<>();
 
+    }
+
+    @Autowired
+    DiscussPostMapper discussPostMapper;
+    @Test
+    public void testDiscussPostSelect() {
+        List<DiscussPost> discussPostsList = discussPostMapper.selectDiscussPosts(0,10, 10);
+        for (DiscussPost discussPost : discussPostsList) {
+            System.out.println(discussPost);
+        }
+        System.out.println(discussPostMapper.selectDiscussPostRows(1));
+    }
+
+    @Autowired
+    UserService userService;
+    @Test
+    public void testUserService() {
+        System.out.println(userService.findUserById(1));
     }
 }
