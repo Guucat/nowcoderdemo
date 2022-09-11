@@ -1,6 +1,9 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.LoginTicket;
 import com.example.demo.entity.User;
+
+import java.util.Map;
 
 
 /**
@@ -9,5 +12,11 @@ import com.example.demo.entity.User;
  */
 
 public interface UserService {
-    User findUserById(int userId);
+     User findUserById(int userId);
+     Map<String, Object> register(User user);
+     int activation(int userId, String code);
+     Map<String, Object> login(String username, String password, int expired);
+     void logout(String ticket);
+     LoginTicket findLoginTicket(String name);
+
 }

@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "demo.path.domain",
+      "type": "java.lang.String",
+      "description": "Description for demo.path.domain."
+    },
+    {
+      "name": "nowcoderdemo.path.domain",
+      "type": "java.lang.String",
+      "description": "Description for nowcoderdemo.path.domain."
+    }
+  ] }

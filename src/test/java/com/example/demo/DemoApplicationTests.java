@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.util.MailClient;
 import com.example.demo.dao.DiscussPostMapper;
 import com.example.demo.entity.DiscussPost;
 import com.example.demo.service.TestFoodService;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 import java.util.*;
 
@@ -65,4 +68,23 @@ class DemoApplicationTests implements ApplicationContextAware {
     public void testUserService() {
         System.out.println(userService.findUserById(1));
     }
+    @Autowired
+    MailClient mailClient;
+    @Autowired
+    TemplateEngine templateEngine;
+    @Test
+    public void testSendTextEmail() {
+        mailClient.sendEmail("1027804480@qq.com", "摆大烂", "别卷了别卷了");
+    }
+    @Test
+    public void testSendHtmlEmail() {
+        //创建内容name--value
+        Context context = new Context();
+        context.setVariable("username","小牛");
+        //绑定模板和内容
+        String content = templateEngine.process("/mail/activation", context);
+
+        mailClient.sendEmail("1027804480@qq.com","TEST",content);
+    }
+
 }
