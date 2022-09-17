@@ -18,5 +18,6 @@ public interface UserService {
      Map<String, Object> login(String username, String password, int expired);
      void logout(String ticket);
      LoginTicket findLoginTicket(String name);
+     int updateHeader(int userId, String headUrl);
 
 }

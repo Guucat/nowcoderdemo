@@ -12,8 +12,9 @@ import javax.annotation.PreDestroy;
 @Service
 public class TestFoodService {
     public TestFoodService() {
-        System.out.println("创建对象");
+        System.out.println("创建对象，调用了构造方法");
     }
+
 
     @PostConstruct  // 创建对象后调用
     public void init() {

@@ -158,4 +158,9 @@ public class UserServiceImpl implements UserService, DemoConstant {
         return loginTicketMapper.selectByTicket(name);
     }
 
+    @Override
+    public int updateHeader(int userId, String headUrl) {
+         return userMapper.updateHeader(userId, headUrl);
+    }
+
 }

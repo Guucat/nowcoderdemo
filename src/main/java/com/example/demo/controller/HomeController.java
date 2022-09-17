@@ -45,7 +45,7 @@ public class HomeController {
         }
         model.addAttribute("discussPosts", discussPosts);
         model.addAttribute("page", page); //不手动传参的话, 模板引擎也会自动注入
-        return "/index";
+        return "index";
     }
 
 }
