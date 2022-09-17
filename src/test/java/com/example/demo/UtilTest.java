@@ -15,10 +15,13 @@ public class UtilTest {
     SensitiveFilter filter;
     @Test
     public void testWord() {
-        String source = "我操吸毒啊aa开*票";
-        System.out.println(source);
+        String source = "这里可以%赌%博%，可以嫖娼，可以吸&&毒，哈哈哈";
+        String s1 = "赌赌博博";
+        System.out.println(filter.filter(filter.filter(s1)));
         System.out.println(filter.filter(source));
-        System.out.println(filter.isSymbol('&'));
+        assert("这里可以%***%，可以**，可以****，哈哈哈".equals(filter.filter(source)));
 
     }
+
+
 }

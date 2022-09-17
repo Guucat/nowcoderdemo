@@ -1,7 +1,10 @@
 package com.example.demo;
 
+import com.example.demo.dao.DiscussPostMapper;
 import com.example.demo.dao.LoginTicketMapper;
+import com.example.demo.entity.DiscussPost;
 import com.example.demo.entity.LoginTicket;
+import com.example.demo.service.DiscussPostService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,6 +34,17 @@ public class MapperTest {
         System.out.println(loginTicketMapper.selectByTicket("Test"));
         loginTicketMapper.updateStatus("Test", 1);
         System.out.println(loginTicketMapper.selectByTicket("Test"));
+    }
+
+    @Autowired
+    DiscussPostService discussPostService;
+    @Test
+    public void DiscussPostTest() {
+        DiscussPost post = new DiscussPost();
+        post.setCreateTime(new Date());
+        post.setTitle("a");
+        post.setContent("b");
+        discussPostService.insertDiscussPost(post);
     }
 
 }

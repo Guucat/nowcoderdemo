@@ -25,7 +25,7 @@ import java.util.Map;
 public class SensitiveFilter {
     private static final Logger logger = LoggerFactory.getLogger(SensitiveFilter.class);
 
-    private TrieNode root;
+    private final TrieNode root;
 
     public SensitiveFilter() {
         root = new TrieNode();
@@ -70,7 +70,6 @@ public class SensitiveFilter {
                     p++;
                     left = p;
                     stb = new StringBuilder();
-
                 } else {
                     p++;
                 }
@@ -79,7 +78,6 @@ public class SensitiveFilter {
             stb.append(newWord.charAt(p));
             String sub = stb.toString();
             // 当前字串sub是敏感词
-            System.out.println(sub);
             if (search(sub)) {
                 StringBuilder str = new StringBuilder();
                 for (int i = 0; i < p+1 - left; i++) {
@@ -97,6 +95,7 @@ public class SensitiveFilter {
                 left++;
                 p = left;
                 stb = new StringBuilder();
+
             }
         }
         return newWord.toString();
@@ -108,12 +107,12 @@ public class SensitiveFilter {
     }
 
    static class TrieNode {
-        private Map<Character, TrieNode> children = new HashMap<>();
+        private final Map<Character, TrieNode> children;
         private boolean isWord;
 
         public TrieNode() {
             children = new HashMap<>();
-        }
+         }
 
     }
 
