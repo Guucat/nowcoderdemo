@@ -33,7 +33,7 @@ public class DiscussPostServiceImpl implements DiscussPostService {
     }
 
     @Override
-    public int insertDiscussPost(DiscussPost discussPost) {
+    public int addDiscussPost(DiscussPost discussPost) {
         if (discussPost == null) {
             throw new RuntimeException("参数不能为空");
         }
@@ -44,5 +44,10 @@ public class DiscussPostServiceImpl implements DiscussPostService {
         discussPost.setTitle(sensitiveFilter.filter(discussPost.getTitle()));
         discussPost.setContent(sensitiveFilter.filter(discussPost.getContent()));
         return discussPostMapper.insertDiscussPost(discussPost);
+    }
+
+    @Override
+    public DiscussPost findDiscussPostById(int id) {
+        return discussPostMapper.selectDiscussPostById(id);
     }
 }

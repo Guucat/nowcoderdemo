@@ -44,7 +44,7 @@ public class MapperTest {
         post.setCreateTime(new Date());
         post.setTitle("a");
         post.setContent("b");
-        discussPostService.insertDiscussPost(post);
+        discussPostService.addDiscussPost(post);
     }
 
 }
