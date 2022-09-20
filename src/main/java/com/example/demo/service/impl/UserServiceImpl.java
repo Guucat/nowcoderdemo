@@ -163,4 +163,9 @@ public class UserServiceImpl implements UserService, DemoConstant {
          return userMapper.updateHeader(userId, headUrl);
     }
 
+    @Override
+    public Integer findIdByName(String username) {
+        return userMapper.selectIdByName(username);
+    }
+
 }

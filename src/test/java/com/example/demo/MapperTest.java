@@ -2,9 +2,11 @@ package com.example.demo;
 
 import com.example.demo.dao.DiscussPostMapper;
 import com.example.demo.dao.LoginTicketMapper;
+import com.example.demo.dao.UserMapper;
 import com.example.demo.entity.DiscussPost;
 import com.example.demo.entity.LoginTicket;
 import com.example.demo.service.DiscussPostService;
+import com.example.demo.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -45,6 +47,18 @@ public class MapperTest {
         post.setTitle("a");
         post.setContent("b");
         discussPostService.addDiscussPost(post);
+    }
+
+    @Autowired
+    UserService userService;
+    @Test
+    public void findIdByNameTest() {
+        int in = userService.findIdByName("yyy");
+        System.out.println(in);
+        Integer empty = userService.findIdByName("");
+        System.out.println(empty);
+        Integer no = userService.findIdByName("adxx56ts");
+        System.out.println(no);
     }
 
 }
